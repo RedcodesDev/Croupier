@@ -22,10 +22,10 @@ public class LeaderboardCommand extends ListenerAdapter {
 	public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
 
 		String[] args = e.getMessage().getContentRaw().split("\\s+");
-		CUser user = new CUser(e.getMember());
 
 		if (args[0].equalsIgnoreCase(Croupier.prefix + "leaderboard")) {
 
+			CUser user = new CUser(e.getMember());
 			if (args.length == 2) {
 
 				EmbedBuilder generating = new EmbedBuilder();

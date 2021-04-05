@@ -14,10 +14,10 @@ public class InfoCommand extends ListenerAdapter {
 	public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
 
 		String[] args = e.getMessage().getContentRaw().split("\\s+");
-		CUser user = new CUser(e.getMember());
 
 		if (args[0].equalsIgnoreCase(Croupier.prefix + "info")) {
-
+			CUser user = new CUser(e.getMember());
+			
 			int users = 0;
 			for (Guild guild : e.getJDA().getGuilds()) {
 				users += guild.getMemberCount();

@@ -17,6 +17,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.statifybot.croupier.data.MongoDBHandler;
+import net.statifybot.croupier.general.HelpCommand;
 import net.statifybot.croupier.general.InfoCommand;
 import net.statifybot.croupier.general.InviteCommand;
 import net.statifybot.croupier.token.DONOTOPEN;
@@ -73,6 +74,7 @@ public class Croupier {
 		builder.addEventListeners(new InfoCommand());
 		builder.addEventListeners(new LeaderboardCommand());
 		builder.addEventListeners(new InviteCommand());
+		builder.addEventListeners(new HelpCommand());
 		
 		jda = builder.build();
 		System.out.println("The Bot is now Online!");
