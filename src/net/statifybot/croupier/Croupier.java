@@ -18,6 +18,7 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.statifybot.croupier.data.MongoDBHandler;
 import net.statifybot.croupier.token.DONOTOPEN;
+import net.statifybot.croupier.user.UserCommand;
 
 public class Croupier {
 
@@ -64,6 +65,9 @@ public class Croupier {
 		builder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
 		builder.setMemberCachePolicy(MemberCachePolicy.ALL);
 
+		
+		builder.addEventListeners(new UserCommand());
+		
 		jda = builder.build();
 		System.out.println("The Bot is now Online!");
 
