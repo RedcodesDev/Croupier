@@ -9,6 +9,7 @@ import com.mongodb.client.model.Filters;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.statifybot.croupier.data.MongoDBHandler;
+import net.statifybot.croupier.game.Game;
 
 public class RoundJoinListener extends ListenerAdapter {
 
@@ -22,8 +23,8 @@ public class RoundJoinListener extends ListenerAdapter {
 			
 			case "join":
 				
-				
-				
+				Round round = new Round(new Game(e.getMessageIdLong()));
+				e.getReaction().removeReaction(e.getUser()).queue();
 				break;
 			
 			default:
