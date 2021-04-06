@@ -13,6 +13,7 @@ public class Emote {
 	String key;
 	long id;
 	String mention;
+	net.dv8tion.jda.api.entities.Emote emote;
 
 	public Emote(String key) {
 		this.key = key;
@@ -22,7 +23,8 @@ public class Emote {
 
 		if (doc != null) {
 			this.id = doc.getLong("emoteid");
-			this.mention = Croupier.jda.getGuildById(580732235313971211l).getEmoteById(this.id).getAsMention();
+			this.emote = Croupier.jda.getGuildById(580732235313971211l).getEmoteById(this.id);
+			this.mention = this.emote.getAsMention();
 		} else {
 			throw new NullPointerException("Emote \"" + this.key + "\" was not found!");
 		}
@@ -35,6 +37,10 @@ public class Emote {
 	
 	public String getMention() {
 		return this.mention;
+	}
+	
+	public net.dv8tion.jda.api.entities.Emote getEmote() {
+		return this.emote;
 	}
 
 }

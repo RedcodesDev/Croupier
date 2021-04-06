@@ -1,4 +1,4 @@
-package net.statifybot.croupier.game;
+package net.statifybot.croupier.game.rounds;
 
 public class Round {
 
