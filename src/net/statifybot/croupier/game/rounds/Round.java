@@ -11,6 +11,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -24,6 +25,7 @@ import net.statifybot.croupier.Croupier;
 import net.statifybot.croupier.data.MongoDBHandler;
 import net.statifybot.croupier.game.Game;
 import net.statifybot.croupier.game.rounds.bets.SelectionFormatter;
+import net.statifybot.croupier.game.rounds.bets.SelectionImage;
 import net.statifybot.croupier.utility.Emote;
 
 public class Round {
@@ -58,119 +60,6 @@ public class Round {
 						this.round = channel;
 
 						this.map = ArrayListMultimap.create();
-						for(int i = 0; i<=36; i++) {
-							this.map.put(12l, String.valueOf(i));
-							this.map.put(13l, String.valueOf(i));
-							this.map.put(14l, String.valueOf(i));
-							this.map.put(15l, String.valueOf(i));
-							this.map.put(16l, String.valueOf(i));
-							this.map.put(17l, String.valueOf(i));
-							this.map.put(18l, String.valueOf(i));
-							this.map.put(19l, String.valueOf(i));
-						}
-						this.map.put(12l, "red");
-						this.map.put(12l, "black");
-						this.map.put(12l, "even");
-						this.map.put(12l, "odd");
-						this.map.put(12l, "first 12");
-						this.map.put(12l, "second 12");
-						this.map.put(12l, "third 12");
-						this.map.put(12l, "1-18");
-						this.map.put(12l, "19-36");
-						this.map.put(12l, "1st column");
-						this.map.put(12l, "2nd column");
-						this.map.put(12l, "3rd column");
-						
-						this.map.put(13l, "red");
-						this.map.put(13l, "black");
-						this.map.put(13l, "even");
-						this.map.put(13l, "odd");
-						this.map.put(13l, "first 12");
-						this.map.put(13l, "second 12");
-						this.map.put(13l, "third 12");
-						this.map.put(13l, "1-18");
-						this.map.put(13l, "19-36");
-						this.map.put(13l, "1st column");
-						this.map.put(13l, "2nd column");
-						this.map.put(13l, "3rd column");
-						
-						this.map.put(14l, "red");
-						this.map.put(14l, "black");
-						this.map.put(14l, "even");
-						this.map.put(14l, "odd");
-						this.map.put(14l, "first 12");
-						this.map.put(14l, "second 12");
-						this.map.put(14l, "third 12");
-						this.map.put(14l, "1-18");
-						this.map.put(14l, "19-36");
-						this.map.put(14l, "1st column");
-						this.map.put(14l, "2nd column");
-						this.map.put(14l, "3rd column");
-					
-						this.map.put(15l, "red");
-						this.map.put(15l, "black");
-						this.map.put(15l, "even");
-						this.map.put(15l, "odd");
-						this.map.put(15l, "first 12");
-						this.map.put(15l, "second 12");
-						this.map.put(15l, "third 12");
-						this.map.put(15l, "1-18");
-						this.map.put(15l, "19-36");
-						this.map.put(15l, "1st column");
-						this.map.put(15l, "2nd column");
-						this.map.put(15l, "3rd column");
-						
-						this.map.put(16l, "red");
-						this.map.put(16l, "black");
-						this.map.put(16l, "even");
-						this.map.put(16l, "odd");
-						this.map.put(16l, "first 12");
-						this.map.put(16l, "second 12");
-						this.map.put(16l, "third 12");
-						this.map.put(16l, "1-18");
-						this.map.put(16l, "19-36");
-						this.map.put(16l, "1st column");
-						this.map.put(16l, "2nd column");
-						this.map.put(16l, "3rd column");
-						
-						this.map.put(17l, "red");
-						this.map.put(17l, "black");
-						this.map.put(17l, "even");
-						this.map.put(17l, "odd");
-						this.map.put(17l, "first 12");
-						this.map.put(17l, "second 12");
-						this.map.put(17l, "third 12");
-						this.map.put(17l, "1-18");
-						this.map.put(17l, "19-36");
-						this.map.put(17l, "1st column");
-						this.map.put(17l, "2nd column");
-						this.map.put(17l, "3rd column");
-						
-						this.map.put(18l, "red");
-						this.map.put(18l, "black");
-						this.map.put(18l, "even");
-						this.map.put(18l, "odd");
-						this.map.put(18l, "first 12");
-						this.map.put(18l, "second 12");
-						this.map.put(18l, "third 12");
-						this.map.put(18l, "1-18");
-						this.map.put(18l, "19-36");
-						this.map.put(18l, "1st column");
-						this.map.put(18l, "2nd column");
-						this.map.put(18l, "3rd column");
-						
-						this.map.put(19l, "red");
-						this.map.put(19l, "black");
-						this.map.put(19l, "even");
-						this.map.put(19l, "odd");
-						this.map.put(19l, "first 12");
-						this.map.put(19l, "second 12");
-						this.map.put(19l, "third 12");
-						this.map.put(19l, "1-18");
-						this.map.put(19l, "19-36");
-						this.map.put(19l, "1st column");
-						this.map.put(19l, "2nd column");
-						this.map.put(19l, "3rd column");
 
 						SelectionFormatter formatter = new SelectionFormatter(this.map);
 
@@ -244,9 +133,51 @@ public class Round {
 			this.game.getChannel().editMessageById(this.game.getMessageId(), msg.build()).queue();
 		});
 	}
-	
+
 	public Multimap<Long, String> getBetMap() {
 		return this.map;
+	}
+
+	public void addBet(long memberid, String field) {
+		this.map.put(memberid, field);
+
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
+		SelectionFormatter formatter = new SelectionFormatter(this.map);
+		collection.updateOne(Filters.eq("messageid", this.messageId), Updates.set("selection", formatter.getAsText()));
+
+		this.round.deleteMessageById(this.messageId).queue();
+
+		new SelectionImage(this).renderImage();
+
+		EmbedBuilder msg = new EmbedBuilder();
+		msg.setTitle("🎲Rouelette Round💸");
+		msg.setDescription(
+				"Write the text of the field you want to select in the Chat.\n*Example:* `1/Odd/Even/1-18/second 12/1st column`");
+		msg.addField("", "React with " + new Emote("leave").getMention() + " to leave the Round", false);
+		msg.setColor(0x33cc33);
+		msg.setImage("attachment://drawedfield.png");
+		msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+		File outputfile = new File("resources/drawedfield.png");
+
+		this.round.sendFile(outputfile, "drawedfield.png").embed(msg.build()).queue(message -> {
+
+			setMessageId(message.getIdLong());
+			message.addReaction(new Emote("leave").getEmote()).queue();
+		});
+	}
+
+	public TextChannel getChannel() {
+		return this.round;
+	}
+
+	public long getMessageId() {
+		return this.messageId;
+	}
+
+	public void setMessageId(long messageId) {
+		this.messageId = messageId;
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
+		collection.updateOne(Filters.eq("channelid", this.round.getIdLong()), Updates.set("messageid", this.messageId));
 	}
 
 }

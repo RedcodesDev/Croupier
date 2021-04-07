@@ -26,10 +26,11 @@ public class SelectionFormatter {
 		this.map = ArrayListMultimap.create();
 
 		String[] args = this.text.split(";");
-
-		for (int i = 0; i < args.length; i++) {
-			String[] splitter = args[i].split("_");
-			this.map.put(Long.valueOf(splitter[0]), splitter[1]);
+		if (!text.equals("")) {
+			for (int i = 0; i < args.length; i++) {
+				String[] splitter = args[i].split("_");
+				this.map.put(Long.valueOf(splitter[0]), splitter[1]);
+			}
 		}
 
 	}

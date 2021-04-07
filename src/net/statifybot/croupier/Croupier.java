@@ -23,6 +23,7 @@ import net.statifybot.croupier.game.deletion.ChannelDeleteListener;
 import net.statifybot.croupier.game.deletion.MessageDeleteListener;
 import net.statifybot.croupier.game.rounds.RoundJoinListener;
 import net.statifybot.croupier.game.rounds.RoundLeaveListener;
+import net.statifybot.croupier.game.rounds.bets.SelectionListener;
 import net.statifybot.croupier.general.HelpCommand;
 import net.statifybot.croupier.general.InfoCommand;
 import net.statifybot.croupier.general.InviteCommand;
@@ -89,6 +90,7 @@ public class Croupier {
 		
 		builder.addEventListeners(new RoundJoinListener());
 		builder.addEventListeners(new RoundLeaveListener());
+		builder.addEventListeners(new SelectionListener());
 		
 		jda = builder.build();
 		System.out.println("The Bot is now Online!");
