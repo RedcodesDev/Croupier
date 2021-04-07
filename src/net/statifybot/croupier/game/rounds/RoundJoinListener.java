@@ -11,6 +11,7 @@ import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEve
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.statifybot.croupier.data.MongoDBHandler;
 import net.statifybot.croupier.game.Game;
+import net.statifybot.croupier.game.rounds.bets.SelectionImage;
 
 public class RoundJoinListener extends ListenerAdapter {
 
@@ -29,6 +30,7 @@ public class RoundJoinListener extends ListenerAdapter {
 					Round round = new Round(new Game(e.getMessageIdLong()));
 					e.getReaction().removeReaction(e.getUser()).queueAfter(1, TimeUnit.SECONDS, msg -> {
 						round.join(e.getMember());
+						new SelectionImage(round).renderImage();
 					});
 					break;
 

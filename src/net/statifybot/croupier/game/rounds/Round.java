@@ -58,7 +58,7 @@ public class Round {
 						this.round = channel;
 
 						this.map = ArrayListMultimap.create();
-						this.map.put(0l, "RED");
+						this.map.put(0l, "4");
 						this.map.put(0l, "ODD");
 						this.map.put(0l, "EVEN");
 
