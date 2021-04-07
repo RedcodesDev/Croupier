@@ -99,36 +99,622 @@ public class SelectionImage {
 			}
 
 			for (String value : plr1Bets) {
+				switch (value) {
 
-				try {
-					int num = Integer.valueOf(value);
+				case "0":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 200, 900, 75, 75, null);
+					break;
 
-					if (num >= 0 && num <= 36) {
-						graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 415, 800, 100, 100, null);
-						graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 440, 800, 100, 100, null);
-						graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 465, 800, 100, 100, null);
-						graphics.drawImage(ImageIO.read(new File("resources/chips/4.png")), 490, 800, 100, 100, null);
-						graphics.drawImage(ImageIO.read(new File("resources/chips/5.png")), 415, 900, 100, 100, null);
-						graphics.drawImage(ImageIO.read(new File("resources/chips/6.png")), 440, 900, 100, 100, null);
-						graphics.drawImage(ImageIO.read(new File("resources/chips/7.png")), 465, 900, 100, 100, null);
-						graphics.drawImage(ImageIO.read(new File("resources/chips/8.png")), 490, 900, 100, 100, null);
+				case "1":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 415, 1200, 75, 75, null);
+					break;
 
-					}
+				case "2":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 415, 1000, 75, 75, null);
+					break;
 
-				} catch (NumberFormatException ex) {
+				case "3":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 415, 800, 75, 75, null);
+					break;
+
+				case "4":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 615, 1200, 75, 75, null);
+					break;
+
+				case "5":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 615, 1000, 75, 75, null);
+					break;
+
+				case "6":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 615, 800, 75, 75, null);
+					break;
+				case "7":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 815, 1200, 75, 75, null);
+					break;
+				case "8":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 815, 1000, 75, 75, null);
+					break;
+				case "9":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 815, 800, 75, 75, null);
+
+					break;
+				case "10":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1015, 1200, 75, 75, null);
+					break;
+				case "11":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1015, 1000, 75, 75, null);
+
+					break;
+				case "12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1015, 800, 75, 75, null);
+					break;
+				case "13":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1215, 1200, 75, 75, null);
+
+					break;
+				case "14":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1215, 1000, 75, 75, null);
+
+					break;
+				case "15":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1215, 800, 75, 75, null);
+
+					break;
+				case "16":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1415, 1200, 75, 75, null);
+
+					break;
+				case "17":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1415, 1000, 75, 75, null);
+
+					break;
+				case "18":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1415, 800, 75, 75, null);
+
+					break;
+				case "19":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1615, 1200, 75, 75, null);
+
+					break;
+				case "20":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1615, 1000, 75, 75, null);
+
+					break;
+				case "21":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1615, 800, 75, 75, null);
+
+					break;
+				case "22":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1815, 1200, 75, 75, null);
+
+					break;
+				case "23":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1815, 1000, 75, 75, null);
+
+					break;
+				case "24":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1815, 800, 75, 75, null);
+
+					break;
+				case "25":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2015, 1200, 75, 75, null);
+
+					break;
+				case "26":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2015, 1000, 75, 75, null);
+
+					break;
+				case "27":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2015, 800, 75, 75, null);
+
+					break;
+				case "28":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2215, 1200, 75, 75, null);
+
+					break;
+				case "29":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2215, 1000, 75, 75, null);
+
+					break;
+				case "30":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2215, 800, 75, 75, null);
+
+					break;
+				case "31":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2415, 1200, 75, 75, null);
+
+					break;
+				case "32":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2415, 1000, 75, 75, null);
+
+					break;
+				case "33":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2415, 800, 75, 75, null);
+
+					break;
+				case "34":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2615, 1200, 75, 75, null);
+
+					break;
+				case "35":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2615, 1000, 75, 75, null);
+
+					break;
+				case "36":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2615, 800, 75, 75, null);
+
+					break;
+
+				case "red":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1215, 1600, 75, 75, null);
+					break;
+
+				case "black":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1615, 1600, 75, 75, null);
+					break;
+
+				case "even":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 815, 1600, 75, 75, null);
+					break;
+
+				case "odd":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2015, 1600, 75, 75, null);
+					break;
+
+				case "1-18":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 415, 1600, 75, 75, null);
+					break;
+
+				case "19-36":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2415, 1600, 75, 75, null);
+					break;
+
+				case "first 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 475, 1400, 75, 75, null);
+					break;
+
+				case "second 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 1275, 1400, 75, 75, null);
+					break;
+
+				case "third 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2075, 1400, 75, 75, null);
+					break;
+
+				case "1st column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2815, 800, 75, 75, null);
+					break;
+
+				case "2nd column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2815, 1000, 75, 75, null);
+					break;
+
+				case "3rd column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 2815, 1200, 75, 75, null);
+
+					break;
 
 				}
 
-				File outputfile = new File("resources/drawedField.png");
-				try {
-					ImageIO.write(img, "png", outputfile);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-
-				return outputfile;
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/1.png")), 415, 800, 75, 75, null);
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 440, 800, 75, 75, null);
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 465, 800, 75, 75, null);
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/4.png")), 490, 800, 75, 75, null);
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/5.png")), 415, 900, 75, 75, null);
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/6.png")), 440, 900, 75, 75, null);
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/7.png")), 465, 900, 75, 75, null);
+//				graphics.drawImage(ImageIO.read(new File("resources/chips/8.png")), 490, 900, 75, 75, null);
 
 			}
+
+			for (String value : plr2Bets) {
+				switch (value) {
+
+				case "0":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 300, 900, 75, 75, null);
+					break;
+
+				case "1":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 440, 1200, 75, 75, null);
+					break;
+
+				case "2":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 440, 1000, 75, 75, null);
+					break;
+
+				case "3":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 440, 800, 75, 75, null);
+					break;
+
+				case "4":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 640, 1200, 75, 75, null);
+					break;
+
+				case "5":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 640, 1000, 75, 75, null);
+					break;
+
+				case "6":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 640, 800, 75, 75, null);
+					break;
+				case "7":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 840, 1200, 75, 75, null);
+					break;
+				case "8":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 840, 1000, 75, 75, null);
+					break;
+				case "9":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 840, 800, 75, 75, null);
+
+					break;
+				case "10":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1040, 1200, 75, 75, null);
+					break;
+				case "11":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1040, 1000, 75, 75, null);
+
+					break;
+				case "12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1040, 800, 75, 75, null);
+					break;
+				case "13":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1240, 1200, 75, 75, null);
+
+					break;
+				case "14":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1240, 1000, 75, 75, null);
+
+					break;
+				case "15":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1240, 800, 75, 75, null);
+
+					break;
+				case "16":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1440, 1200, 75, 75, null);
+
+					break;
+				case "17":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1440, 1000, 75, 75, null);
+
+					break;
+				case "18":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1440, 800, 75, 75, null);
+
+					break;
+				case "19":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1640, 1200, 75, 75, null);
+
+					break;
+				case "20":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1640, 1000, 75, 75, null);
+
+					break;
+				case "21":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1640, 800, 75, 75, null);
+
+					break;
+				case "22":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1840, 1200, 75, 75, null);
+
+					break;
+				case "23":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1840, 1000, 75, 75, null);
+
+					break;
+				case "24":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1840, 800, 75, 75, null);
+
+					break;
+				case "25":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2040, 1200, 75, 75, null);
+
+					break;
+				case "26":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2040, 1000, 75, 75, null);
+
+					break;
+				case "27":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2040, 800, 75, 75, null);
+
+					break;
+				case "28":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2240, 1200, 75, 75, null);
+
+					break;
+				case "29":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2240, 1000, 75, 75, null);
+
+					break;
+				case "30":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2240, 800, 75, 75, null);
+
+					break;
+				case "31":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2440, 1200, 75, 75, null);
+
+					break;
+				case "32":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2440, 1000, 75, 75, null);
+
+					break;
+				case "33":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2440, 800, 75, 75, null);
+
+					break;
+				case "34":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2640, 1200, 75, 75, null);
+
+					break;
+				case "35":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2640, 1000, 75, 75, null);
+
+					break;
+				case "36":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2640, 800, 75, 75, null);
+
+					break;
+
+				case "red":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1265, 1600, 75, 75, null);
+					break;
+
+				case "black":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1665, 1600, 75, 75, null);
+					break;
+
+				case "even":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 865, 1600, 75, 75, null);
+					break;
+
+				case "odd":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2065, 1600, 75, 75, null);
+					break;
+
+				case "1-18":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 465, 1600, 75, 75, null);
+					break;
+
+				case "19-36":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2465, 1600, 75, 75, null);
+					break;
+
+				case "first 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 575, 1400, 75, 75, null);
+					break;
+
+				case "second 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 1375, 1400, 75, 75, null);
+					break;
+
+				case "third 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2175, 1400, 75, 75, null);
+					break;
+
+				case "1st column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2865, 800, 75, 75, null);
+					break;
+
+				case "2nd column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2865, 1000, 75, 75, null);
+					break;
+
+				case "3rd column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/2.png")), 2865, 1200, 75, 75, null);
+
+					break;
+
+				}
+			}
+			
+			for (String value : plr3Bets) {
+				switch (value) {
+
+				case "0":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 300, 900, 75, 75, null);
+					break;
+
+				case "1":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 440, 1200, 75, 75, null);
+					break;
+
+				case "2":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 440, 1000, 75, 75, null);
+					break;
+
+				case "3":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 440, 800, 75, 75, null);
+					break;
+
+				case "4":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 640, 1200, 75, 75, null);
+					break;
+
+				case "5":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 640, 1000, 75, 75, null);
+					break;
+
+				case "6":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 640, 800, 75, 75, null);
+					break;
+				case "7":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 840, 1200, 75, 75, null);
+					break;
+				case "8":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 840, 1000, 75, 75, null);
+					break;
+				case "9":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 840, 800, 75, 75, null);
+
+					break;
+				case "10":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1040, 1200, 75, 75, null);
+					break;
+				case "11":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1040, 1000, 75, 75, null);
+
+					break;
+				case "12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1040, 800, 75, 75, null);
+					break;
+				case "13":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1240, 1200, 75, 75, null);
+
+					break;
+				case "14":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1240, 1000, 75, 75, null);
+
+					break;
+				case "15":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1240, 800, 75, 75, null);
+
+					break;
+				case "16":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1440, 1200, 75, 75, null);
+
+					break;
+				case "17":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1440, 1000, 75, 75, null);
+
+					break;
+				case "18":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1440, 800, 75, 75, null);
+
+					break;
+				case "19":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1640, 1200, 75, 75, null);
+
+					break;
+				case "20":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1640, 1000, 75, 75, null);
+
+					break;
+				case "21":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1640, 800, 75, 75, null);
+
+					break;
+				case "22":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1840, 1200, 75, 75, null);
+
+					break;
+				case "23":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1840, 1000, 75, 75, null);
+
+					break;
+				case "24":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1840, 800, 75, 75, null);
+
+					break;
+				case "25":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2040, 1200, 75, 75, null);
+
+					break;
+				case "26":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2040, 1000, 75, 75, null);
+
+					break;
+				case "27":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2040, 800, 75, 75, null);
+
+					break;
+				case "28":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2240, 1200, 75, 75, null);
+
+					break;
+				case "29":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2240, 1000, 75, 75, null);
+
+					break;
+				case "30":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2240, 800, 75, 75, null);
+
+					break;
+				case "31":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2440, 1200, 75, 75, null);
+
+					break;
+				case "32":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2440, 1000, 75, 75, null);
+
+					break;
+				case "33":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2440, 800, 75, 75, null);
+
+					break;
+				case "34":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2640, 1200, 75, 75, null);
+
+					break;
+				case "35":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2640, 1000, 75, 75, null);
+
+					break;
+				case "36":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2640, 800, 75, 75, null);
+
+					break;
+
+				case "red":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1265, 1600, 75, 75, null);
+					break;
+
+				case "black":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1665, 1600, 75, 75, null);
+					break;
+
+				case "even":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 865, 1600, 75, 75, null);
+					break;
+
+				case "odd":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2065, 1600, 75, 75, null);
+					break;
+
+				case "1-18":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 465, 1600, 75, 75, null);
+					break;
+
+				case "19-36":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2465, 1600, 75, 75, null);
+					break;
+
+				case "first 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 575, 1400, 75, 75, null);
+					break;
+
+				case "second 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 1375, 1400, 75, 75, null);
+					break;
+
+				case "third 12":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2175, 1400, 75, 75, null);
+					break;
+
+				case "1st column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2865, 800, 75, 75, null);
+					break;
+
+				case "2nd column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2865, 1000, 75, 75, null);
+					break;
+
+				case "3rd column":
+					graphics.drawImage(ImageIO.read(new File("resources/chips/3.png")), 2865, 1200, 75, 75, null);
+
+					break;
+
+				}
+			}
+
+
+			File outputfile = new File("resources/drawedField.png");
+			try {
+				ImageIO.write(img, "png", outputfile);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+
+			return outputfile;
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

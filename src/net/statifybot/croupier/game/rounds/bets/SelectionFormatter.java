@@ -16,7 +16,7 @@ public class SelectionFormatter {
 
 		this.text = "";
 		for (Entry<Long, String> entry : this.map.entries()) {
-			this.text = text + entry.getKey() + "-" + entry.getValue() + ";";
+			this.text = text + entry.getKey() + "_" + entry.getValue() + ";";
 		}
 
 	}
@@ -28,7 +28,7 @@ public class SelectionFormatter {
 		String[] args = this.text.split(";");
 
 		for (int i = 0; i < args.length; i++) {
-			String[] splitter = args[i].split("-");
+			String[] splitter = args[i].split("_");
 			this.map.put(Long.valueOf(splitter[0]), splitter[1]);
 		}
 
