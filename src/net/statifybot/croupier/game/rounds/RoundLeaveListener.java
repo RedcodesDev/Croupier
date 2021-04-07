@@ -12,23 +12,23 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.statifybot.croupier.data.MongoDBHandler;
 import net.statifybot.croupier.game.Game;
 
-public class RoundJoinListener extends ListenerAdapter {
+public class RoundLeaveListener extends ListenerAdapter {
 
 	public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent e) {
 
 		if (!e.getUser().isBot()) {
 
-			MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("games");
+			MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
 			Document doc = collection.find(Filters.eq("messageid", e.getMessageIdLong())).first();
 
 			if (doc != null) {
 				switch (e.getReactionEmote().getName()) {
 
-				case "join":
+				case "leave":
 
-					Round round = new Round(new Game(e.getMessageIdLong()));
-					e.getReaction().removeReaction(e.getUser()).queueAfter(1, TimeUnit.SECONDS, msg -> {
-						round.join(e.getMember());
+					Round round = new Round(new Game(e.getGuild()));
+					e.getReaction().removeReaction(e.getUser()).queue(msg -> {
+						round.leave(e.getMember());
 					});
 					break;
 

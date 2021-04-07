@@ -32,7 +32,7 @@ public class Game {
 		msg.setDescription("React with " + new Emote("join").getMention() + " to join the Round");
 		msg.addField("Players", new Emote("yellowdot").getMention() + " Waiting for Players...", false);
 		msg.setColor(0x33cc33);
-		msg.setFooter("� Croupier Discord Bot " + Croupier.year, Croupier.icon);
+		msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
 		channel.sendMessage(msg.build()).queue(message -> {
 			this.messageId = message.getIdLong();
 
@@ -60,12 +60,34 @@ public class Game {
 		}
 	}
 	
+	public Game(Guild guild) {
+		this.guild = guild;
+
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("games");
+		Document doc = collection.find(Filters.eq("guildid", this.guild.getIdLong())).first();
+
+		if (doc != null) {
+			this.messageId = doc.getLong("messageid");
+			this.channel = this.guild.getTextChannelById(doc.getLong("channelid"));
+			this.channelId = channel.getIdLong();
+			this.roundCat = this.guild.getCategoryById(doc.getLong("roundCategory"));
+		}
+	}
+	
 	public Category getRoundCategory() {
 		return this.roundCat;
 	}
 	
 	public Guild getGuild() {
 		return this.guild;
+	}
+	
+	public TextChannel getChannel() {
+		return this.channel;
+	}
+	
+	public long getMessageId() {
+		return this.messageId;
 	}
 
 }
