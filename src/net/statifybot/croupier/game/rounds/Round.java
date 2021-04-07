@@ -134,5 +134,9 @@ public class Round {
 			this.game.getChannel().editMessageById(this.game.getMessageId(), msg.build()).queue();
 		});
 	}
+	
+	public Multimap<Long, String> getBetMap() {
+		return this.map;
+	}
 
 }
