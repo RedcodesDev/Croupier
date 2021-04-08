@@ -171,7 +171,7 @@ public class Croupier {
 	}
 
 	int next = 7;
-	int roundCheck = 60;
+	int roundCheck = 30;
 	String[] status = new String[] { "%prefix%help", "%members% User", "%version%", "%guilds% Guilds"
 
 	};
@@ -239,7 +239,7 @@ public class Croupier {
 			
 		}
 		
-		roundCheck = 60;
+		roundCheck = 30;
 	} else {
 		roundCheck--;
 	}

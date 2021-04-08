@@ -156,7 +156,7 @@ public class Round {
 					.withZone(ZoneId.of("Europe/Berlin"));
 			String instant = dateFormatter.format(Instant.now().plus(1, ChronoUnit.MINUTES));
 
-			collection.updateOne(Filters.eq("messagid", this.messageId), Updates.set("drawTime", instant));
+			collection.updateOne(Filters.eq("messageid", this.messageId), Updates.set("drawTime", instant));
 		}
 
 		this.round.deleteMessageById(this.messageId).queue();
@@ -186,14 +186,18 @@ public class Round {
 
 		EmbedBuilder msg = new EmbedBuilder();
 		msg.setTitle("🎲Rouelette Round💸");
-		msg.setDescription("Waiting for Results...");
+		msg.setDescription(new Emote("yellowdot").getMention() + " Waiting for Results...");
 		msg.setColor(0x33cc33);
-		msg.setImage("https://i.giphy.com/media/26uf2YTgF5upXUTm0/giphy.webp");
+		msg.setImage("http://visionvenue.de/roulette.gif");
 		msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
 
 		this.round.sendMessage(msg.build()).queue(message -> {
 
 			setMessageId(message.getIdLong());
+			
+			
+			
+			
 		});
 
 	}
