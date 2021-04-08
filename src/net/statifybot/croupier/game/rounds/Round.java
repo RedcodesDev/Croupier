@@ -1,9 +1,14 @@
 package net.statifybot.croupier.game.rounds;
 
 import java.io.File;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.Locale;
 
 import org.bson.Document;
 
@@ -80,8 +85,8 @@ public class Round {
 
 							Document document = new Document("channelid", this.round.getIdLong())
 									.append("guildid", this.guild.getIdLong()).append("messageid", this.messageId)
-									.append("step", Step.CHOOSING.toString())
-									.append("selection", formatter.getAsText());
+									.append("step", Step.CHOOSING.toString()).append("selection", formatter.getAsText())
+									.append("drawTime", null);
 							collection.insertOne(document);
 						});
 
@@ -142,8 +147,17 @@ public class Round {
 		this.map.put(memberid, field);
 
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
+		Document doc = collection.find(Filters.eq("messageid", this.messageId)).first();
 		SelectionFormatter formatter = new SelectionFormatter(this.map);
 		collection.updateOne(Filters.eq("messageid", this.messageId), Updates.set("selection", formatter.getAsText()));
+
+		if (doc.getString("drawTime") == null) {
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.GERMANY)
+					.withZone(ZoneId.of("Europe/Berlin"));
+			String instant = dateFormatter.format(Instant.now().plus(1, ChronoUnit.MINUTES));
+
+			collection.updateOne(Filters.eq("messagid", this.messageId), Updates.set("drawTime", instant));
+		}
 
 		this.round.deleteMessageById(this.messageId).queue();
 
@@ -164,6 +178,24 @@ public class Round {
 			setMessageId(message.getIdLong());
 			message.addReaction(new Emote("leave").getEmote()).queue();
 		});
+	}
+
+	public void draw() {
+
+		this.round.deleteMessageById(this.messageId).queue();
+
+		EmbedBuilder msg = new EmbedBuilder();
+		msg.setTitle("🎲Rouelette Round💸");
+		msg.setDescription("Waiting for Results...");
+		msg.setColor(0x33cc33);
+		msg.setImage("https://i.giphy.com/media/26uf2YTgF5upXUTm0/giphy.webp");
+		msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+
+		this.round.sendMessage(msg.build()).queue(message -> {
+
+			setMessageId(message.getIdLong());
+		});
+
 	}
 
 	public TextChannel getChannel() {

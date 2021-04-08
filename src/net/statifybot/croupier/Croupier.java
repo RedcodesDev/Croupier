@@ -4,10 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.Locale;
 import java.util.Random;
 
 import javax.security.auth.login.LoginException;
+
+import org.bson.Document;
+
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -17,10 +27,12 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.statifybot.croupier.data.MongoDBHandler;
+import net.statifybot.croupier.game.Game;
 import net.statifybot.croupier.game.commands.SetupCommand;
 import net.statifybot.croupier.game.deletion.CategoryDeleteListener;
 import net.statifybot.croupier.game.deletion.ChannelDeleteListener;
 import net.statifybot.croupier.game.deletion.MessageDeleteListener;
+import net.statifybot.croupier.game.rounds.Round;
 import net.statifybot.croupier.game.rounds.RoundJoinListener;
 import net.statifybot.croupier.game.rounds.RoundLeaveListener;
 import net.statifybot.croupier.game.rounds.bets.SelectionListener;
@@ -159,6 +171,7 @@ public class Croupier {
 	}
 
 	int next = 7;
+	int roundCheck = 60;
 	String[] status = new String[] { "%prefix%help", "%members% User", "%version%", "%guilds% Guilds"
 
 	};
@@ -201,6 +214,36 @@ public class Croupier {
 			next--;
 		}
 
+		
+	if(roundCheck <= 0) {
+		
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
+		FindIterable<Document> iterable = collection.find();
+		Iterator<Document> iterator = iterable.iterator();
+		
+		while(iterator.hasNext()) {
+			
+			Document doc = iterator.next();
+			
+			if(doc.getString("drawTime") != null) {
+				Round round = new Round(new Game(jda.getGuildById(doc.getLong("guildid"))));
+				
+				Instant instant = LocalDateTime
+						.parse(doc.getString("drawTime"), DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.GERMANY))
+						.atZone(ZoneId.of("Europe/Berlin")).toInstant();
+				
+				if(instant.isBefore(Instant.now())) {
+					round.draw();
+				}
+			}
+			
+		}
+		
+		roundCheck = 60;
+	} else {
+		roundCheck--;
+	}
+		
 	}
 
 }
