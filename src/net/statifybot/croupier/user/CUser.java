@@ -12,7 +12,7 @@ import net.statifybot.croupier.data.MongoDBHandler;
 public class CUser {
 
 	Member memb;
-	int coins;
+	int chips;
 	int wins;
 	int loses;
 	int gamesPlayed;
@@ -24,16 +24,16 @@ public class CUser {
 		Document doc = collection.find(Filters.eq("_id", this.memb.getIdLong())).first();
 
 		if (doc != null) {
-			this.coins = doc.getInteger("coins");
+			this.chips = doc.getInteger("chips");
 			this.wins = doc.getInteger("wins");
 			this.loses = doc.getInteger("loses");
 			this.gamesPlayed = doc.getInteger("gamesPlayed");
 		} else {
-			doc = new Document("_id", this.memb.getIdLong()).append("coins", 1000).append("wins", 0).append("loses", 0)
+			doc = new Document("_id", this.memb.getIdLong()).append("chips", 20).append("wins", 0).append("loses", 0)
 					.append("gamesPlayed", 0);
 			collection.insertOne(doc);
 			
-			this.coins = 1000;
+			this.chips = 20;
 			this.wins = 0;
 			this.loses = 0;
 			this.gamesPlayed = 0;
@@ -44,38 +44,38 @@ public class CUser {
 		return this.memb;
 	}
 
-	public int getCoins() {
-		return this.coins;
+	public int getChips() {
+		return this.chips;
 	}
 
-	public void setCoins(int coins) {
-		this.coins = coins;
+	public void setChips(int chips) {
+		this.chips = chips;
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
-		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("coins", this.coins));
+		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("chips", this.chips));
 	}
 
-	public void addCoins(int coins) {
-		this.coins += coins;
+	public void addChips(int chips) {
+		this.chips += chips;
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
-		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("coins", this.coins));
+		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("chips", this.chips));
 	}
 
-	public void removeCoins(int coins) {
-		this.coins -= coins;
+	public void removeChips(int chips) {
+		this.chips -= chips;
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
-		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("coins", this.coins));
+		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("chips", this.chips));
 	}
 
-	public void multiplyCoins(int coins) {
-		this.coins *= coins;
+	public void multiplyChips(int chips) {
+		this.chips *= chips;
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
-		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("coins", this.coins));
+		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("chips", this.chips));
 	}
 
-	public void divideCoins(int coins) {
-		this.coins /= coins;
+	public void divideChips(int chips) {
+		this.chips /= chips;
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
-		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("coins", this.coins));
+		collection.updateOne(Filters.eq("_id", this.memb.getIdLong()), Updates.set("chips", this.chips));
 	}
 	
 	public int getWins() {

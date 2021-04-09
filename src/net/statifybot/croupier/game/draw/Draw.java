@@ -69,17 +69,17 @@ public class Draw {
 					}
 				}
 				
-				
-
-				if (selectedNum == this.number) {
-					if (winners.containsKey(entry.getKey())) {
-						winners.put(entry.getKey(), winners.get(entry.getKey()) + 35);
-					} else {
-						winners.put(entry.getKey(), 35);
-					}
-				}
 
 			} catch (NumberFormatException ex) {
+			
+				switch(entry.getValue()) {
+				
+				case "red":
+					
+					break;
+				
+				
+				}
 				
 			}
 
