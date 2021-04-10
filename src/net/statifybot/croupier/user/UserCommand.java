@@ -49,21 +49,21 @@ public class UserCommand extends ListenerAdapter {
 						msg.addField("Loses", String.valueOf(user.getLoses()), false);
 						msg.setColor(0x33cc33);
 						msg.setThumbnail(user.getMember().getUser().getAvatarUrl());
-						msg.setFooter("� Croupier Discord Bot " + Croupier.year, Croupier.icon);
+						msg.setFooter("© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 						e.getChannel().sendMessage(msg.build()).reference(e.getMessage()).queue();
 
 					} else {
 						EmbedBuilder error = new EmbedBuilder();
 						error.setTitle("Bots are not allowed");
 						error.setColor(Color.RED);
-						error.setFooter("� Croupier Discord Bot " + Croupier.year, Croupier.icon);
+						error.setFooter("© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 						e.getChannel().sendMessage(error.build()).reference(e.getMessage()).queue();
 					}
 				} else {
 					EmbedBuilder error = new EmbedBuilder();
 					error.setTitle("The User was not found");
 					error.setColor(Color.RED);
-					error.setFooter("� Croupier Discord Bot " + Croupier.year, Croupier.icon);
+					error.setFooter("© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 					e.getChannel().sendMessage(error.build()).reference(e.getMessage()).queue();
 				}
 			} else {
@@ -80,14 +80,14 @@ public class UserCommand extends ListenerAdapter {
 					msg.addField("Loses", String.valueOf(user.getLoses()), false);
 					msg.setColor(0x33cc33);
 					msg.setThumbnail(user.getMember().getUser().getAvatarUrl());
-					msg.setFooter("� Croupier Discord Bot " + Croupier.year, Croupier.icon);
+					msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
 					e.getChannel().sendMessage(msg.build()).reference(e.getMessage()).queue();
 
 				} else {
 					EmbedBuilder error = new EmbedBuilder();
 					error.setTitle("Bots are not allowed");
 					error.setColor(Color.RED);
-					error.setFooter("� Croupier Discord Bot " + Croupier.year, Croupier.icon);
+					error.setFooter("© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 					e.getChannel().sendMessage(error.build()).reference(e.getMessage()).queue();
 				}
 

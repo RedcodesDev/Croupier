@@ -20,7 +20,7 @@ public class InviteCommand extends ListenerAdapter {
 			msg.setDescription("Invite Croupier to play Roulette on your own Discord Server for free!");
 			msg.addField("", "[**Click here**](https://discord.com/oauth2/authorize?client_id=828674781196582974&scope=bot&permissions=2147871808)", false);
 			msg.setColor(0x33cc33);
-			msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+			msg.setFooter("Â© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 			e.getChannel().sendMessage(msg.build()).reference(e.getMessage()).queue();
 			
 		}

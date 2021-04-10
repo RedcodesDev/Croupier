@@ -35,6 +35,7 @@ import net.statifybot.croupier.game.deletion.MessageDeleteListener;
 import net.statifybot.croupier.game.rounds.Round;
 import net.statifybot.croupier.game.rounds.RoundJoinListener;
 import net.statifybot.croupier.game.rounds.RoundLeaveListener;
+import net.statifybot.croupier.game.rounds.Step;
 import net.statifybot.croupier.game.rounds.bets.SelectionListener;
 import net.statifybot.croupier.general.HelpCommand;
 import net.statifybot.croupier.general.InfoCommand;
@@ -55,7 +56,7 @@ public class Croupier {
 
 	public static String year = "2021";
 
-	public static String icon = "https://visionvenue.de/PicsVV/StatifyBotV3.png";
+	public static String icon = "https://visionvenue.de/Croupier-Logo.png";
 
 	public static String prefix = "c!";
 
@@ -88,22 +89,21 @@ public class Croupier {
 		builder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
 		builder.setMemberCachePolicy(MemberCachePolicy.ALL);
 
-		
 		builder.addEventListeners(new UserCommand());
 		builder.addEventListeners(new InfoCommand());
 		builder.addEventListeners(new LeaderboardCommand());
 		builder.addEventListeners(new InviteCommand());
 		builder.addEventListeners(new HelpCommand());
 		builder.addEventListeners(new SetupCommand());
-		
+
 		builder.addEventListeners(new ChannelDeleteListener());
 		builder.addEventListeners(new CategoryDeleteListener());
 		builder.addEventListeners(new MessageDeleteListener());
-		
+
 		builder.addEventListeners(new RoundJoinListener());
 		builder.addEventListeners(new RoundLeaveListener());
 		builder.addEventListeners(new SelectionListener());
-		
+
 		jda = builder.build();
 		System.out.println("The Bot is now Online!");
 
@@ -138,7 +138,6 @@ public class Croupier {
 						System.exit(0);
 						break;
 
-					
 					} else {
 						System.out.println("Use 'exit' or 'stop' to shutdown");
 					}
@@ -214,36 +213,39 @@ public class Croupier {
 			next--;
 		}
 
-		
-	if(roundCheck <= 0) {
-		
-		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
-		FindIterable<Document> iterable = collection.find();
-		Iterator<Document> iterator = iterable.iterator();
-		
-		while(iterator.hasNext()) {
-			
-			Document doc = iterator.next();
-			
-			if(doc.getString("drawTime") != null) {
-				Round round = new Round(new Game(jda.getGuildById(doc.getLong("guildid"))));
-				
-				Instant instant = LocalDateTime
-						.parse(doc.getString("drawTime"), DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.GERMANY))
-						.atZone(ZoneId.of("Europe/Berlin")).toInstant();
-				
-				if(instant.isBefore(Instant.now())) {
-					round.draw();
+		if (roundCheck <= 0) {
+
+			MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
+			FindIterable<Document> iterable = collection.find();
+			Iterator<Document> iterator = iterable.iterator();
+
+			while (iterator.hasNext()) {
+
+				Document doc = iterator.next();
+
+				if (doc.getString("drawTime") != null) {
+					if (Step.valueOf(doc.getString("step")).equals(Step.CHOOSING)) {
+						Round round = new Round(new Game(jda.getGuildById(doc.getLong("guildid"))));
+
+						Instant instant = LocalDateTime
+								.parse(doc.getString("drawTime"),
+										DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.GERMANY))
+								.atZone(ZoneId.of("Europe/Berlin")).toInstant();
+
+						if (instant.isBefore(Instant.now())) {
+							round.draw();
+						}
+
+					}
 				}
+
 			}
-			
+
+			roundCheck = 30;
+		} else {
+			roundCheck--;
 		}
-		
-		roundCheck = 30;
-	} else {
-		roundCheck--;
-	}
-		
+
 	}
 
 }

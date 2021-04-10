@@ -22,7 +22,7 @@ public class HelpCommand extends ListenerAdapter {
 			msg.addField(new Emote("arrow").getMention() + " Commands",
 					"All Commands can be found here: https://example.com", false);
 			msg.setColor(0x33cc33);
-			msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+			msg.setFooter("Â© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 			e.getChannel().sendMessage(msg.build()).reference(e.getMessage()).queue();
 		}
 

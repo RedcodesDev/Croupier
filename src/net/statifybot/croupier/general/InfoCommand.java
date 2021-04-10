@@ -42,7 +42,7 @@ public class InfoCommand extends ListenerAdapter {
 					"> [`Invite Bot`](https://discord.com/oauth2/authorize?client_id=828674781196582974&scope=bot&permissions=2147871808) [`Github`](https://github.com/RedstonecraftHD/Croupier)",
 					false);
 			msg.setColor(0x33cc33);
-			msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+			msg.setFooter("Â© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 			e.getChannel().sendMessage(msg.build()).reference(e.getMessage()).queue();
 
 		}

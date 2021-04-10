@@ -2,6 +2,7 @@ package net.statifybot.croupier.game.rounds;
 
 import java.io.File;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
 
 import org.bson.Document;
 
@@ -29,8 +32,10 @@ import net.dv8tion.jda.api.utils.AttachmentOption;
 import net.statifybot.croupier.Croupier;
 import net.statifybot.croupier.data.MongoDBHandler;
 import net.statifybot.croupier.game.Game;
+import net.statifybot.croupier.game.draw.Draw;
 import net.statifybot.croupier.game.rounds.bets.SelectionFormatter;
 import net.statifybot.croupier.game.rounds.bets.SelectionImage;
+import net.statifybot.croupier.user.CUser;
 import net.statifybot.croupier.utility.Emote;
 
 public class Round {
@@ -154,7 +159,7 @@ public class Round {
 		if (doc.getString("drawTime") == null) {
 			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.GERMANY)
 					.withZone(ZoneId.of("Europe/Berlin"));
-			String instant = dateFormatter.format(Instant.now().plus(1, ChronoUnit.MINUTES));
+			String instant = dateFormatter.format(Instant.now().plus(2, ChronoUnit.MINUTES));
 
 			collection.updateOne(Filters.eq("messageid", this.messageId), Updates.set("drawTime", instant));
 		}
@@ -170,7 +175,8 @@ public class Round {
 		msg.addField("", "React with " + new Emote("leave").getMention() + " to leave the Round", false);
 		msg.setColor(0x33cc33);
 		msg.setImage("attachment://drawedfield.png");
-		msg.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+		msg.setFooter("© Croupier Discord Bot " + Croupier.year + " • bets end at", Croupier.icon);
+		msg.setTimestamp(getDrawTime());
 		File outputfile = new File("resources/drawedfield.png");
 
 		this.round.sendFile(outputfile, "drawedfield.png").embed(msg.build()).queue(message -> {
@@ -183,6 +189,7 @@ public class Round {
 	public void draw() {
 
 		this.round.deleteMessageById(this.messageId).queue();
+		setStep(Step.RESULTS);
 
 		EmbedBuilder msg = new EmbedBuilder();
 		msg.setTitle("🎲Rouelette Round💸");
@@ -194,10 +201,36 @@ public class Round {
 		this.round.sendMessage(msg.build()).queue(message -> {
 
 			setMessageId(message.getIdLong());
-			
-			
-			
-			
+
+			Draw draw = new Draw(this);
+			draw.selectNumber();
+			draw.retrieveWinners();
+
+			EmbedBuilder results = new EmbedBuilder();
+			results.setTitle("🎲Rouelette Round💸");
+			String result = "Selected Number: **" + draw.getNumber() + "**\n\n";
+			for (Entry<Long, Integer> entry : draw.getChips().entrySet()) {
+				if (entry.getValue() > 0) {
+					result += new Emote("greendot").getMention() + " <@" + entry.getKey() + "> won " + entry.getValue()
+							+ " Chip/s\n";
+					CUser user = new CUser(entry.getKey());
+					user.addChips(entry.getValue());
+				} else {
+					result += new Emote("reddot").getMention() + " <@" + entry.getKey() + "> won no Chips\n";
+
+				}
+			}
+			results.setDescription(result);
+			results.setColor(0x33cc33);
+			results.setFooter("© Cropier Discord Bot " + Croupier.year, Croupier.icon);
+			this.round.sendMessage(results.build()).queueAfter(3, TimeUnit.SECONDS, msg1 -> {
+				message.delete().queue();
+
+				setMessageId(msg1.getIdLong());
+
+				message.addReaction(new Emote("leave").getEmote()).queue();
+			});
+
 		});
 
 	}
@@ -214,6 +247,27 @@ public class Round {
 		this.messageId = messageId;
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
 		collection.updateOne(Filters.eq("channelid", this.round.getIdLong()), Updates.set("messageid", this.messageId));
+	}
+
+	public void setStep(Step step) {
+		this.step = step;
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
+		collection.updateOne(Filters.eq("channelid", this.round.getIdLong()),
+				Updates.set("step", this.step.toString()));
+	}
+
+	public Instant getDrawTime() {
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("rounds");
+		Document doc = collection.find(Filters.eq("channelid", this.round.getIdLong())).first();
+		if (doc != null) {
+			Instant instant = LocalDateTime
+					.parse(doc.getString("drawTime"),
+							DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.GERMANY))
+					.atZone(ZoneId.of("Europe/Berlin")).toInstant();
+			return instant;
+		}
+
+		return null;
 	}
 
 }

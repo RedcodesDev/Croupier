@@ -31,13 +31,13 @@ public class LeaderboardCommand extends ListenerAdapter {
 				EmbedBuilder generating = new EmbedBuilder();
 				generating.setTitle("Generating Leaderboard...");
 				generating.setColor(Color.YELLOW);
-				generating.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+				generating.setFooter("Â© Croupier Discord Bot " + Croupier.year, Croupier.icon);
 				e.getChannel().sendMessage(generating.build()).reference(e.getMessage()).mentionRepliedUser(false)
 						.queue(message -> {
 
 							switch (args[1]) {
 
-							case "coins":
+							case "chips":
 
 								MongoCollection<Document> collection = MongoDBHandler.getDatabase()
 										.getCollection("users");
@@ -50,20 +50,20 @@ public class LeaderboardCommand extends ListenerAdapter {
 
 									Document doc = iterator.next();
 
-									coinsMap.put(doc.getLong("_id"), doc.getInteger("coins"));
+									coinsMap.put(doc.getLong("_id"), doc.getInteger("chips"));
 								}
 
 								EmbedBuilder coins = new EmbedBuilder();
-								coins.setTitle("Coin Leaderboard");
+								coins.setTitle("Chip Leaderboard");
 								coins.setColor(0x33cc33);
-								coins.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+								coins.setFooter("Â© Croupier Discord Bot " + Croupier.year, Croupier.icon);
 
 								String coinsMsg = "";
 								int coinsPos = 0;
 
 								for (Entry<Long, Integer> entry : MapSorter.sortLongMap(coinsMap, 10).entrySet()) {
 									coinsPos++;
-									coinsMsg += coinsPos + ". <@" + entry.getKey() + "> - $" + entry.getValue() + "\n";
+									coinsMsg += coinsPos + ". <@" + entry.getKey() + "> - " + entry.getValue() + " Chips\n";
 								}
 
 								coins.setDescription(coinsMsg);
@@ -91,7 +91,7 @@ public class LeaderboardCommand extends ListenerAdapter {
 								EmbedBuilder wins = new EmbedBuilder();
 								wins.setTitle("Wins Leaderboard");
 								wins.setColor(0x33cc33);
-								wins.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+								wins.setFooter("Â© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 
 								String winsMsg = "";
 								int winsPos = 0;
@@ -126,7 +126,7 @@ public class LeaderboardCommand extends ListenerAdapter {
 								EmbedBuilder loses = new EmbedBuilder();
 								loses.setTitle("Lost Rounds Leaderboard");
 								loses.setColor(0x33cc33);
-								loses.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+								loses.setFooter("Â© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 
 								String losesMsg = "";
 								int losesPos = 0;
@@ -161,7 +161,7 @@ public class LeaderboardCommand extends ListenerAdapter {
 								EmbedBuilder plays = new EmbedBuilder();
 								plays.setTitle("Played Rounds Leaderboard");
 								plays.setColor(0x33cc33);
-								plays.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+								plays.setFooter("Â© Croupier Discord Bot " + Croupier.year, Croupier.icon);
 
 								String playsMsg = "";
 								int playsPos = 0;
@@ -180,9 +180,9 @@ public class LeaderboardCommand extends ListenerAdapter {
 							default:
 								EmbedBuilder error = new EmbedBuilder();
 								error.setTitle("Syntax Error");
-								error.setDescription("Use `c!leaderboard <coins/wins/loses/plays>` instead");
+								error.setDescription("Use `c!leaderboard <chips/wins/loses/plays>` instead");
 								error.setColor(Color.RED);
-								error.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+								error.setFooter("Â© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 								e.getChannel().sendMessage(error.build()).reference(e.getMessage()).queue();
 								message.delete().queue();
 								break;
@@ -196,7 +196,7 @@ public class LeaderboardCommand extends ListenerAdapter {
 				error.setTitle("Syntax Error");
 				error.setDescription("Use `c!leaderboard <coins/wins/loses/plays>` instead");
 				error.setColor(Color.RED);
-				error.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+				error.setFooter("Â© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 				e.getChannel().sendMessage(error.build()).reference(e.getMessage()).queue();
 			}
 		}
