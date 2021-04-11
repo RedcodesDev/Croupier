@@ -6,10 +6,13 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 
 import net.dv8tion.jda.api.entities.Category;
+import net.dv8tion.jda.api.entities.PermissionOverride;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageDeleteEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.statifybot.croupier.data.MongoDBHandler;
+import net.statifybot.croupier.game.Game;
+import net.statifybot.croupier.game.rounds.Round;
 
 public class MessageDeleteListener extends ListenerAdapter {
 
@@ -31,6 +34,7 @@ public class MessageDeleteListener extends ListenerAdapter {
 
 			collection.deleteOne(doc);
 		}
+
 	}
 
 }

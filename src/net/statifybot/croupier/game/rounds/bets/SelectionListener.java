@@ -49,9 +49,9 @@ public class SelectionListener extends ListenerAdapter {
 							.queue();
 
 					if (user.getChips() >= 1) {
-
+						if(round.getBetMap().get(e.getMember().getIdLong()).size() < 6) {
 						try {
-
+							
 							int num = Integer.valueOf(e.getMessage().getContentRaw().trim());
 
 							if (num <= 36 && num >= 0) {
@@ -84,6 +84,27 @@ public class SelectionListener extends ListenerAdapter {
 													.queue();
 										});
 
+							} else {
+								e.getMessage().delete().queue();
+								EmbedBuilder error = new EmbedBuilder();
+								error.setTitle("Your bet is invalid");
+								error.setDescription(
+										"Please use the text of the field you want to select\n*Example:* `1/Odd/Even/1-18/second 12/1st column`");
+								error.setColor(Color.RED);
+								error.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+								e.getChannel().sendMessage(error.build()).queue(message -> {
+									message.delete().queueAfter(5, TimeUnit.SECONDS);
+									e.getChannel().getManager().putPermissionOverride(e.getMember(),
+											EnumSet.of(Permission.VIEW_CHANNEL, Permission.MESSAGE_WRITE,
+													Permission.MESSAGE_EXT_EMOJI, Permission.CREATE_INSTANT_INVITE,
+													Permission.MESSAGE_HISTORY, Permission.MESSAGE_READ),
+											EnumSet.of(Permission.MANAGE_CHANNEL, Permission.MANAGE_WEBHOOKS,
+													Permission.MESSAGE_ATTACH_FILES, Permission.MESSAGE_TTS,
+													Permission.MANAGE_PERMISSIONS, Permission.MESSAGE_ADD_REACTION,
+													Permission.MESSAGE_MENTION_EVERYONE, Permission.USE_SLASH_COMMANDS,
+													Permission.MESSAGE_EMBED_LINKS, Permission.MESSAGE_MANAGE))
+											.queue();
+								});
 							}
 
 						} catch (NumberFormatException ex) {
@@ -445,7 +466,7 @@ public class SelectionListener extends ListenerAdapter {
 								EmbedBuilder error = new EmbedBuilder();
 								error.setTitle("Your bet is invalid");
 								error.setDescription(
-										"Please use the text of the field you want to select\\n*Example:* `1/Odd/Even/1-18/second 12/1st column`");
+										"Please use the text of the field you want to select\n*Example:* `1/Odd/Even/1-18/second 12/1st column`");
 								error.setColor(Color.RED);
 								error.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
 								e.getChannel().sendMessage(error.build()).queue(message -> {
@@ -465,6 +486,20 @@ public class SelectionListener extends ListenerAdapter {
 
 							}
 
+						}
+						} else {
+							e.getMessage().delete().queue();
+
+							EmbedBuilder error = new EmbedBuilder();
+							error.setTitle("You can only bet on a maximum of 6 fields.");
+							error.setColor(Color.RED);
+							error.setFooter("© Croupier Discord Bot " + Croupier.year, Croupier.icon);
+							e.getChannel().sendMessage(error.build()).append(e.getMember().getAsMention())
+									.queue(message -> {
+
+										message.delete().queueAfter(3, TimeUnit.SECONDS);
+
+									});
 						}
 					} else {
 						e.getMessage().delete().queue();

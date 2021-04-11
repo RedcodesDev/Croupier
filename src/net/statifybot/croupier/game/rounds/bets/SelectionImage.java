@@ -1,8 +1,12 @@
 package net.statifybot.croupier.game.rounds.bets;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +103,20 @@ public class SelectionImage {
 			}
 
 			for (String value : plr1Bets) {
+
+				Font fileFont = null;
+
+				try {
+					fileFont = Font.createFont(Font.TRUETYPE_FONT, new File("resources/Font.otf"));
+				} catch (FontFormatException | IOException e) {
+					e.printStackTrace();
+				}
+
+				Font font = fileFont.deriveFont(150f);
+				graphics.setFont(font);
+				graphics.setColor(new Color(0x753ec7));
+				graphics.drawString(round.getChannel().getGuild().getMemberById(plr1).getEffectiveName(), 50, 150);
+
 				switch (value) {
 
 				case "0":
@@ -308,6 +326,22 @@ public class SelectionImage {
 			}
 
 			for (String value : plr2Bets) {
+
+				Font fileFont = null;
+
+				try {
+					fileFont = Font.createFont(Font.TRUETYPE_FONT, new File("resources/Font.otf"));
+				} catch (FontFormatException | IOException e) {
+					e.printStackTrace();
+				}
+
+				Font font = fileFont.deriveFont(150f);
+				graphics.setFont(font);
+				graphics.setColor(new Color(0xb56c3b));
+				int width = graphics.getFontMetrics(font)
+						.stringWidth(round.getChannel().getGuild().getMemberById(plr2).getEffectiveName());
+				graphics.drawString(round.getChannel().getGuild().getMemberById(plr2).getEffectiveName(),
+						(3300 - 50) - width, 150);
 				switch (value) {
 
 				case "0":
@@ -505,8 +539,23 @@ public class SelectionImage {
 
 				}
 			}
-			
+
 			for (String value : plr3Bets) {
+				
+				Font fileFont = null;
+
+				try {
+					fileFont = Font.createFont(Font.TRUETYPE_FONT, new File("resources/Font.otf"));
+				} catch (FontFormatException | IOException e) {
+					e.printStackTrace();
+				}
+
+				Font font = fileFont.deriveFont(150f);
+				graphics.setFont(font);
+				graphics.setColor(new Color(0x3bc93b));
+				graphics.drawString(round.getChannel().getGuild().getMemberById(plr3).getEffectiveName(), 50, 400);
+
+				
 				switch (value) {
 
 				case "0":
@@ -704,8 +753,25 @@ public class SelectionImage {
 
 				}
 			}
-			
+
 			for (String value : plr4Bets) {
+				
+				Font fileFont = null;
+
+				try {
+					fileFont = Font.createFont(Font.TRUETYPE_FONT, new File("resources/Font.otf"));
+				} catch (FontFormatException | IOException e) {
+					e.printStackTrace();
+				}
+
+				Font font = fileFont.deriveFont(150f);
+				graphics.setFont(font);
+				graphics.setColor(new Color(0x4040c2));
+				int width = graphics.getFontMetrics(font)
+						.stringWidth(round.getChannel().getGuild().getMemberById(plr4).getEffectiveName());
+				graphics.drawString(round.getChannel().getGuild().getMemberById(plr4).getEffectiveName(),
+						(3300 - 50) - width, 400);
+				
 				switch (value) {
 
 				case "0":
@@ -903,7 +969,6 @@ public class SelectionImage {
 
 				}
 			}
-
 
 			File outputfile = new File("resources/drawedField.png");
 			try {

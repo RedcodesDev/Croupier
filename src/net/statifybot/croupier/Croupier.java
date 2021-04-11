@@ -50,9 +50,9 @@ public class Croupier {
 
 	public static JDA jda;
 
-	public static String Version = "Alpha 1.0";
+	public static String Version = "Preview Release 2021.4";
 
-	public static boolean Dev = true;
+	public static boolean Dev = false;
 
 	public static String year = "2021";
 
@@ -88,7 +88,7 @@ public class Croupier {
 
 		builder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
 		builder.setMemberCachePolicy(MemberCachePolicy.ALL);
-
+		
 		builder.addEventListeners(new UserCommand());
 		builder.addEventListeners(new InfoCommand());
 		builder.addEventListeners(new LeaderboardCommand());
@@ -236,8 +236,19 @@ public class Croupier {
 							round.draw();
 						}
 
+					} else {
+						Round round = new Round(new Game(jda.getGuildById(doc.getLong("guildid"))));
+						
+						Instant instant = LocalDateTime
+								.parse(doc.getString("drawTime"),
+										DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.GERMANY))
+								.atZone(ZoneId.of("Europe/Berlin")).toInstant();
+
+						if (instant.isBefore(Instant.now())) {
+							round.restart();
+						}
 					}
-				}
+				} 
 
 			}
 

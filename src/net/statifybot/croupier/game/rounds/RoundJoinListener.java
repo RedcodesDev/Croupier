@@ -30,7 +30,6 @@ public class RoundJoinListener extends ListenerAdapter {
 					Round round = new Round(new Game(e.getMessageIdLong()));
 					e.getReaction().removeReaction(e.getUser()).queueAfter(1, TimeUnit.SECONDS, msg -> {
 						round.join(e.getMember());
-						new SelectionImage(round).renderImage();
 					});
 					break;
 

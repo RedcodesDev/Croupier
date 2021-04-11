@@ -29,8 +29,8 @@ public class Draw {
 
 	public void selectNumber() {
 		Random rnd = new Random();
-//		this.number = rnd.nextInt(37);
-		this.number = 17;
+		this.number = rnd.nextInt(37);
+//		this.number = 17;
 		this.num = new SelectedNumber(this.number);
 		System.out.println("Selected Number: " + this.number);
 		System.out.println("Color: " + this.num.getColor());
@@ -96,37 +96,37 @@ public class Draw {
 						if (this.number == plrNum) {
 							this.winners.put(plr1Id, 36);
 						} else {
-							this.loser.put(plr1Id, 1);
+							this.winners.put(plr1Id, 0);
 						}
 					} else if (plr1.size() == 2) {
 						if (this.number == plrNum) {
 							this.winners.put(plr1Id, 18);
 						} else {
-							this.loser.put(plr1Id, 1);
+							this.winners.put(plr1Id, 0);
 						}
 					} else if (plr1.size() == 3) {
 						if (this.number == plrNum) {
 							this.winners.put(plr1Id, 19);
 						} else {
-							this.loser.put(plr1Id, 1);
+							this.winners.put(plr1Id, 0);
 						}
 					} else if (plr1.size() == 4) {
 						if (this.number == plrNum) {
 							this.winners.put(plr1Id, 9);
 						} else {
-							this.loser.put(plr1Id, 1);
+							this.winners.put(plr1Id, 0);
 						}
 					} else if (plr1.size() == 5) {
 						if (this.number == plrNum) {
 							this.winners.put(plr1Id, 6);
 						} else {
-							this.loser.put(plr1Id, 1);
+							this.winners.put(plr1Id, 0);
 						}
 					} else if (plr1.size() == 6) {
 						if (this.number == plrNum) {
 							this.winners.put(plr1Id, 3);
 						} else {
-							this.loser.put(plr1Id, 1);
+							this.winners.put(plr1Id, 0);
 						}
 					}
 				}
@@ -136,37 +136,37 @@ public class Draw {
 						if (this.number == plrNum) {
 							this.winners.put(plr2Id, 35);
 						} else {
-							this.loser.put(plr2Id, 1);
+							this.winners.put(plr2Id, 0);
 						}
 					} else if (plr2.size() == 2) {
 						if (this.number == plrNum) {
 							this.winners.put(plr2Id, 17);
 						} else {
-							this.loser.put(plr2Id, 1);
+							this.winners.put(plr2Id, 0);
 						}
 					} else if (plr2.size() == 3) {
 						if (this.number == plrNum) {
 							this.winners.put(plr2Id, 11);
 						} else {
-							this.loser.put(plr2Id, 1);
+							this.winners.put(plr2Id, 0);
 						}
 					} else if (plr2.size() == 4) {
 						if (this.number == plrNum) {
 							this.winners.put(plr2Id, 8);
 						} else {
-							this.loser.put(plr2Id, 1);
+							this.winners.put(plr2Id, 0);
 						}
 					} else if (plr2.size() == 5) {
 						if (this.number == plrNum) {
 							this.winners.put(plr2Id, 5);
 						} else {
-							this.loser.put(plr2Id, 1);
+							this.winners.put(plr2Id, 0);
 						}
 					} else if (plr2.size() == 6) {
 						if (this.number == plrNum) {
 							this.winners.put(plr2Id, 2);
 						} else {
-							this.loser.put(plr2Id, 1);
+							this.winners.put(plr2Id, 0);
 						}
 					}
 				}
@@ -176,37 +176,37 @@ public class Draw {
 						if (this.number == plrNum) {
 							this.winners.put(plr3Id, 35);
 						} else {
-							this.loser.put(plr3Id, 1);
+							this.winners.put(plr3Id, 0);
 						}
 					} else if (plr3.size() == 2) {
 						if (this.number == plrNum) {
 							this.winners.put(plr3Id, 17);
 						} else {
-							this.loser.put(plr3Id, 1);
+							this.winners.put(plr3Id, 0);
 						}
 					} else if (plr3.size() == 3) {
 						if (this.number == plrNum) {
 							this.winners.put(plr3Id, 11);
 						} else {
-							this.loser.put(plr3Id, 1);
+							this.winners.put(plr3Id, 0);
 						}
 					} else if (plr3.size() == 4) {
 						if (this.number == plrNum) {
 							this.winners.put(plr3Id, 8);
 						} else {
-							this.loser.put(plr3Id, 1);
+							this.winners.put(plr3Id, 0);
 						}
 					} else if (plr3.size() == 5) {
 						if (this.number == plrNum) {
 							this.winners.put(plr3Id, 5);
 						} else {
-							this.loser.put(plr3Id, 1);
+							this.winners.put(plr3Id, 0);
 						}
 					} else if (plr3.size() == 6) {
 						if (this.number == plrNum) {
 							this.winners.put(plr3Id, 2);
 						} else {
-							this.loser.put(plr3Id, 1);
+							this.winners.put(plr3Id, 0);
 						}
 					}
 				}
@@ -216,35 +216,37 @@ public class Draw {
 						if (this.number == plrNum) {
 							this.winners.put(plr4Id, 35);
 						} else {
-							this.loser.put(plr4Id, 1);
+							this.winners.put(plr4Id, 0);
 						}
 					} else if (plr4.size() == 2) {
 						if (this.number == plrNum) {
 							this.winners.put(plr4Id, 17);
+						} else {
+							this.winners.put(plr4Id, 0);
 						}
 					} else if (plr4.size() == 3) {
 						if (this.number == plrNum) {
 							this.winners.put(plr4Id, 11);
 						} else {
-							this.loser.put(plr4Id, 1);
+							this.winners.put(plr4Id, 0);
 						}
 					} else if (plr4.size() == 4) {
 						if (this.number == plrNum) {
 							this.winners.put(plr4Id, 8);
 						} else {
-							this.loser.put(plr4Id, 1);
+							this.winners.put(plr4Id, 0);
 						}
 					} else if (plr4.size() == 5) {
 						if (this.number == plrNum) {
 							this.winners.put(plr4Id, 5);
 						} else {
-							this.loser.put(plr4Id, 1);
+							this.winners.put(plr4Id, 0);
 						}
 					} else if (plr4.size() == 6) {
 						if (this.number == plrNum) {
 							this.winners.put(plr4Id, 2);
 						} else {
-							this.loser.put(plr4Id, 1);
+							this.winners.put(plr4Id, 0);
 						}
 					}
 				}

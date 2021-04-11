@@ -18,9 +18,11 @@ public class HelpCommand extends ListenerAdapter {
 
 			EmbedBuilder msg = new EmbedBuilder();
 			msg.setTitle("Croupier Help");
-			msg.addField(new Emote("arrow").getMention() + " How to play", "You play how you feel like lol", false);
+			msg.addField(new Emote("arrow").getMention() + " How to play",
+					"Bet on a Number, Color, Column, etc. and win Chips.", false);
 			msg.addField(new Emote("arrow").getMention() + " Commands",
-					"All Commands can be found here: https://example.com", false);
+					"> `c!setup` - Starts the Setup Process\n> `c!user @User` - Displays Information about a user\n> `c!leaderboard chips/wins/loses/plays` - Displays a Leaderboard for the specific Category\n> `c!info` - Displays Informations about the Discord Bot\n> `c!invite` - Sends you the invite URL for the Bot",
+					false);
 			msg.setColor(0x33cc33);
 			msg.setFooter("© Croupier Discord Bot" + Croupier.year, Croupier.icon);
 			e.getChannel().sendMessage(msg.build()).reference(e.getMessage()).queue();
