@@ -106,7 +106,25 @@ public class CUser {
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
 		collection.updateOne(Filters.eq("_id", this.memberid), Updates.set("chips", this.chips));
 	}
+	
+	public void addWin() {
+		this.wins++;
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
+		collection.updateOne(Filters.eq("_id", this.memberid), Updates.set("wins", this.wins));
+	}
+	
+	public void addLose() {
+		this.loses++;
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
+		collection.updateOne(Filters.eq("_id", this.memberid), Updates.set("loses", this.loses));
+	}
 
+	public void addGamePlayed() {
+		this.gamesPlayed++;
+		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
+		collection.updateOne(Filters.eq("_id", this.memberid), Updates.set("playedGames", this.gamesPlayed));
+	}
+	
 	public int getWins() {
 		return this.wins;
 	}

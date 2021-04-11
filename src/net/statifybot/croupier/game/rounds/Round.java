@@ -215,9 +215,13 @@ public class Round {
 							+ " Chip/s\n";
 					CUser user = new CUser(entry.getKey());
 					user.addChips(entry.getValue());
+					user.addGamePlayed();
+					user.addWin();
 				} else {
 					result += new Emote("reddot").getMention() + " <@" + entry.getKey() + "> won no Chips\n";
-
+					CUser user = new CUser(entry.getKey());
+					user.addGamePlayed();
+					user.addLose();
 				}
 			}
 			results.setDescription(result);
