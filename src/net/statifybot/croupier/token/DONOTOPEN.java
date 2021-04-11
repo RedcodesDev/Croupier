@@ -3,11 +3,11 @@ package net.statifybot.croupier.token;
 public class DONOTOPEN {
 
 	public static String getToken() {
-		return "ODI4Njc0NzgxMTk2NTgyOTc0.YGtBhw.oxCWAvtcR9tQGE7FKoqC025xsI8";
+		return "ODI4Njc0NzgxMTk2NTgyOTc0.YGtBhw.F08q-skdD_7WPC_Uaygeo8ARkbs";
 	}
 	
 	public static String getDevToken() {
-		return "ODI4Njc0NzgxMTk2NTgyOTc0.YGtBhw.oxCWAvtcR9tQGE7FKoqC025xsI8";
+		return "ODI4Njc0NzgxMTk2NTgyOTc0.YGtBhw.F08q-skdD_7WPC_Uaygeo8ARkbs";
 	}
 
 	public static String getMongoConnectionString() {

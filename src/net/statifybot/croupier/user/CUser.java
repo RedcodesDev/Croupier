@@ -122,7 +122,7 @@ public class CUser {
 	public void addGamePlayed() {
 		this.gamesPlayed++;
 		MongoCollection<Document> collection = MongoDBHandler.getDatabase().getCollection("users");
-		collection.updateOne(Filters.eq("_id", this.memberid), Updates.set("playedGames", this.gamesPlayed));
+		collection.updateOne(Filters.eq("_id", this.memberid), Updates.set("gamesPlayed", this.gamesPlayed));
 	}
 	
 	public int getWins() {

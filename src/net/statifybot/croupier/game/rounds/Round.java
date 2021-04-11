@@ -203,7 +203,7 @@ public class Round {
 		msg.setImage("attachment://drawedfield.png");
 		msg.setFooter("© Croupier Discord Bot " + Croupier.year + " • bets end at", Croupier.icon);
 		msg.setTimestamp(getDrawTime());
-		File outputfile = new File("resources/drawedfield.png");
+		File outputfile = new File("resources/drawedField.png");
 
 		this.round.sendFile(outputfile, "drawedfield.png").embed(msg.build()).queue(message -> {
 
